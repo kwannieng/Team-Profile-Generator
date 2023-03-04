@@ -177,5 +177,7 @@ function createTeamPage (){
     if(!fs.existsSync(OUTPUT_DIR)){
         fs.mkdirSync(OUTPUT_DIR)
     }
+    console.log(`Creating a Team Profile webpage...`)
     fs.writeFileSync(outputPath, render(teamMembers), 'utf-8');
+    console.log(`Team Profile webpage is created!`)
 }
