@@ -122,6 +122,8 @@ function managerPrompt() {
 console.log(answers)
         if (answers.addMember === "Yes"){
             addMember();
+        } else {
+            createTeamPage();
         }
     })
 }
@@ -143,6 +145,8 @@ inquirer.prompt(internQuestions).then(answers => {
     ids.push(answers.id);
     if (answers.addMember === "Yes"){
         addMember();
+    }else {
+        createTeamPage();
     }
 })
 }
@@ -154,11 +158,11 @@ inquirer.prompt(engineerQuestions).then(answers => {
     ids.push(answers.id);
     if (answers.addMember === "Yes"){
         addMember();
+    }else {
+        createTeamPage();
     }
 })
 }
-
-
         
 
 // function call to initialize program
@@ -169,3 +173,9 @@ function start(){
 
 start();
 
+function createTeamPage (){
+    if(!fs.existsSync(OUTPUT_DIR)){
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, render(teamMembers), 'utf-8');
+}
